@@ -8,6 +8,10 @@ from app.core.database import engine, Base
 from app.modules.auth.router import router as auth_router
 from app.modules.contracts.router import router as contracts_router
 from app.modules.risks.router import router as risks_router
+from app.modules.reports.router import router as reports_router
+from app.modules.chat.router import router as chat_router
+from app.modules.templates.router import router as templates_router
+from app.modules.admin.router import router as admin_router
 
 
 @asynccontextmanager
@@ -31,6 +35,10 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(contracts_router)
 app.include_router(risks_router)
+app.include_router(reports_router)
+app.include_router(chat_router)
+app.include_router(templates_router)
+app.include_router(admin_router)
 
 
 @app.get("/api/health")
