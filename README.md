@@ -10,7 +10,7 @@
 
 <div align="center">
 
-# AI Contract Review
+# 智审通
 
 ### AI 原生合同审查助手 — 让每份合同都经得起推敲
 
