@@ -1,6 +1,7 @@
 import json
 from datetime import datetime, timezone
 
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.modules.contracts.models import Contract
@@ -29,6 +30,20 @@ async def run_review(db: AsyncSession, contract: Contract):
                 result_text = result_text[4:].strip()
 
         data = json.loads(result_text)
+
+        # Delete existing risk items and report for this contract (idempotent)
+        existing = await db.execute(
+            select(RiskItem).where(RiskItem.contract_id == contract.id)
+        )
+        for item in existing.scalars():
+            await db.delete(item)
+        existing_report = await db.execute(
+            select(ReviewReport).where(ReviewReport.contract_id == contract.id)
+        )
+        report = existing_report.scalar_one_or_none()
+        if report:
+            await db.delete(report)
+        await db.flush()
 
         # Save risk items
         for r in data.get("risks", []):
@@ -69,6 +84,7 @@ async def run_review(db: AsyncSession, contract: Contract):
         await db.commit()
 
     except Exception as e:
+        await db.rollback()
         contract.status = "failed"
         await db.commit()
         raise e

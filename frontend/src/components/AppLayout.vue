@@ -9,8 +9,7 @@
         <div style="flex:1;display:flex;gap:24px;margin-left:48px;font-size:14px;">
           <router-link to="/" style="color:#fff;text-decoration:none;opacity:0.85;">合同上传</router-link>
           <router-link to="/contracts" style="color:#fff;text-decoration:none;opacity:0.85;">审查记录</router-link>
-          <router-link to="/templates" style="color:#fff;text-decoration:none;opacity:0.85;">模板库</router-link>
-          <router-link v-if="auth.user?.role==='admin'" to="/admin" style="color:#fff;text-decoration:none;opacity:0.85;">管理</router-link>
+          <router-link v-if="auth.user?.role==='admin'" to="/admin" style="color:#fff;text-decoration:none;opacity:0.85;">管理后台</router-link>
         </div>
         <div style="margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px;">
           <span style="opacity:0.9;">{{ auth.user?.display_name }} ({{ auth.user?.department }})</span>

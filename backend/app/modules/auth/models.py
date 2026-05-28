@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, func
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, func
 from app.core.database import Base
 
 
@@ -11,4 +11,5 @@ class User(Base):
     display_name = Column(String(50), nullable=False)
     role = Column(String(20), default="reviewer")  # admin / reviewer
     department = Column(String(100), default="")
+    is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, server_default=func.now())

@@ -10,6 +10,7 @@ from app.modules.contracts.models import Contract
 from app.modules.contracts.schemas import ContractResponse, ContractListItem, ContractListResponse
 from app.modules.contracts.service import save_upload_file, extract_text
 from app.modules.risks.service import run_review
+from app.core.log import log_operation
 
 router = APIRouter(prefix="/api/contracts", tags=["contracts"])
 
@@ -30,18 +31,15 @@ async def upload_contract(
         file_path=file_path,
         file_size=os.path.getsize(file_path),
         file_type=file_type,
-        status="completed" if raw_text else "failed",
+        status="reviewing" if raw_text else "failed",
         raw_text=raw_text,
     )
     db.add(contract)
     await db.commit()
     await db.refresh(contract)
-    if contract.status == "completed":
-        try:
-            await run_review(db, contract)
-            await db.refresh(contract)
-        except Exception:
-            pass
+    if contract.status == "reviewing":
+        await run_review(db, contract)
+    await db.refresh(contract)
     return ContractResponse.model_validate(contract)
 
 
@@ -79,6 +77,23 @@ async def delete_contract(contract_id: int, db: AsyncSession = Depends(get_db), 
     result = await db.execute(select(Contract).where(Contract.id == contract_id))
     contract = result.scalar_one_or_none()
     if contract:
+        title = contract.title
         await db.delete(contract)
         await db.commit()
+        await log_operation(db, current_user, "delete", "contract", contract_id, f"删除合同 {title}")
     return {"ok": True}
+
+
+@router.get("/{contract_id}/file")
+async def get_contract_file(contract_id: int, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+    from fastapi.responses import FileResponse
+    import os
+    result = await db.execute(select(Contract).where(Contract.id == contract_id))
+    contract = result.scalar_one_or_none()
+    if not contract:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Contract not found")
+    file_path = os.path.abspath(contract.file_path)
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="File not found on disk")
+    return FileResponse(file_path, filename=contract.file_name)

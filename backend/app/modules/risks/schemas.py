@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class RiskItemResponse(BaseModel):
     id: int
     contract_id: int
-    clause_index: int
+    clause_index: float
     clause_text: str
     risk_level: str
     category: str

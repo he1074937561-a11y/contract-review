@@ -10,6 +10,7 @@ class RegisterRequest(BaseModel):
     username: str
     password: str
     display_name: str
+    role: str = "reviewer"
     department: str = ""
 
 

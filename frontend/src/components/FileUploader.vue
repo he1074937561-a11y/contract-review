@@ -13,7 +13,7 @@
       </n-icon>
       <p style="font-size:16px;font-weight:600;margin-top:12px;">点击或将合同文件拖拽到此处</p>
       <p style="color:#999;font-size:13px;margin-top:4px;">支持 PDF, Word (docx), 图片 · 最大 50MB</p>
-      <input ref="inputRef" type="file" accept=".pdf,.docx,.doc,.png,.jpg,.jpeg" style="display:none" @change="handleFileChange" />
+      <input ref="inputRef" type="file" accept=".pdf,.docx,.doc" style="display:none" @change="handleFileChange" />
     </div>
     <div v-if="selectedFile" style="margin-top:16px;padding:16px;background:#f9f9f9;border-radius:8px;display:flex;align-items:center;justify-content:space-between;">
       <div style="display:flex;align-items:center;gap:12px;">
@@ -32,21 +32,49 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useMessage } from 'naive-ui'
 
 const emit = defineEmits<{ (e: 'file-selected', file: File | null): void }>()
 const selectedFile = ref<File | null>(null)
 const dragging = ref(false)
 const inputRef = ref<HTMLInputElement>()
+const msg = useMessage()
+
+const ALLOWED_TYPES = [
+  'application/pdf',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/msword',
+]
+const MAX_SIZE = 50 * 1024 * 1024
+
+function validateFile(file: File): boolean {
+  if (!ALLOWED_TYPES.includes(file.type) && !file.name.match(/\.(pdf|docx|doc)$/i)) {
+    msg.error('不支持的文件格式，请上传 PDF 或 Word 文档')
+    return false
+  }
+  if (file.size > MAX_SIZE) {
+    msg.error('文件大小超过 50MB 限制')
+    return false
+  }
+  return true
+}
+
+function selectFile(file: File) {
+  if (validateFile(file)) {
+    selectedFile.value = file
+    emit('file-selected', file)
+  }
+}
 
 function triggerUpload() { inputRef.value?.click() }
 function handleFileChange(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
-  if (file) { selectedFile.value = file; emit('file-selected', file) }
+  if (file) selectFile(file)
 }
 function handleDrop(e: DragEvent) {
   dragging.value = false
   const file = e.dataTransfer?.files?.[0]
-  if (file) { selectedFile.value = file; emit('file-selected', file) }
+  if (file) selectFile(file)
 }
 function clearFile() { selectedFile.value = null; emit('file-selected', null) }
 </script>

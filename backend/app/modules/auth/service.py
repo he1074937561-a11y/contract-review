@@ -10,11 +10,12 @@ from app.core.security import hash_password, verify_password, create_access_toke
 async def register(db: AsyncSession, req: RegisterRequest) -> User:
     result = await db.execute(select(User).where(User.username == req.username))
     if result.scalar_one_or_none():
-        raise HTTPException(status_code=400, detail="Username already exists")
+        raise HTTPException(status_code=400, detail="用户名已存在")
     user = User(
         username=req.username,
         password_hash=hash_password(req.password),
         display_name=req.display_name,
+        role=req.role,
         department=req.department,
     )
     db.add(user)
@@ -27,6 +28,8 @@ async def login(db: AsyncSession, username: str, password: str) -> dict:
     result = await db.execute(select(User).where(User.username == username))
     user = result.scalar_one_or_none()
     if not user or not verify_password(password, user.password_hash):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
+        raise HTTPException(status_code=401, detail="用户名或密码错误")
+    if not user.is_active:
+        raise HTTPException(status_code=403, detail="该账号已被禁用，请联系管理员")
     token = create_access_token({"sub": user.id})
     return {"access_token": token, "user": user}

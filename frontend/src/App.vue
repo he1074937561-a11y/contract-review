@@ -2,12 +2,7 @@
   <n-loading-bar-provider>
     <n-message-provider>
       <n-dialog-provider>
-        <template v-if="!auth.token || !auth.user">
-          <router-view />
-        </template>
-        <AppLayout v-else>
-          <router-view />
-        </AppLayout>
+        <router-view />
       </n-dialog-provider>
     </n-message-provider>
   </n-loading-bar-provider>
@@ -17,7 +12,6 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from './stores/auth'
-import AppLayout from './components/AppLayout.vue'
 
 const auth = useAuthStore()
 const router = useRouter()

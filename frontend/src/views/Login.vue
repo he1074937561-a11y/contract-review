@@ -17,6 +17,9 @@
         <h2 style="margin-bottom:4px;">欢迎回来</h2>
         <p style="color:#999;margin-bottom:24px;">请输入账号密码登录系统</p>
         <n-form @submit.prevent="handleLogin">
+          <n-alert v-if="loginError" type="error" closable @close="loginError = ''" style="margin-bottom:16px;font-size:13px;">
+            {{ loginError }}
+          </n-alert>
           <n-input v-model:value="username" placeholder="账号" size="large" style="margin-bottom:16px;" />
           <n-input v-model:value="password" type="password" placeholder="密码" size="large" style="margin-bottom:24px;" show-password-on="click" />
           <n-button type="primary" size="large" block :loading="loading" attr-type="submit">进入系统</n-button>
@@ -39,14 +42,24 @@ const msg = useMessage()
 const username = ref('')
 const password = ref('')
 const loading = ref(false)
+const loginError = ref('')
 
 async function handleLogin() {
+  loginError.value = ''
+  if (!username.value.trim()) {
+    msg.warning('请输入用户名')
+    return
+  }
+  if (!password.value.trim()) {
+    msg.warning('请输入密码')
+    return
+  }
   loading.value = true
   try {
     await auth.login(username.value, password.value)
-    router.push('/')
-  } catch {
-    msg.error('登录失败，请检查账号密码')
+    await router.push('/contracts')
+  } catch (e: any) {
+    loginError.value = e.response?.data?.detail || '登录失败，请检查账号密码'
   } finally {
     loading.value = false
   }

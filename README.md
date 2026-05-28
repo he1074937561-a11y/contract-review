@@ -20,9 +20,18 @@
 
 [快速开始](#快速开始) • [功能一览](#核心功能) • [技术栈](#技术栈) • [项目文档](#项目文档) • [API 文档](#api-接口) • [部署](#生产部署)
 
+<br>
+<br>
+
+<a href="demo.mp4">
+  <img src="https://img.shields.io/badge/📺_观看演示视频-8A2BE2?style=for-the-badge" alt="演示视频">
+</a>
+
 </div>
 
 <br>
+
+https://github.com/user-attachments/assets/f40cd423-8f9e-4c60-a3d6-58e104e2b2dc
 
 ---
 
