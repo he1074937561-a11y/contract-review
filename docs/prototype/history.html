@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>历史记录 - 智审通 AI合同审查系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.3.4.3.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.1.0.7.js"></script>
+</head>
+<body class="bg-[#f4f7fa] min-h-screen font-sans">
+<!-- 导航栏 -->
+<nav class="bg-[#1e3a8a] text-white h-16 flex items-center justify-between px-8 shadow-md sticky top-0 z-50">
+<div class="flex items-center gap-2">
+<iconify-icon class="text-3xl text-blue-300" icon="mdi:shield-check"></iconify-icon>
+<span class="text-xl font-bold tracking-tight">智审通 AI合同审查系统</span>
+</div>
+<div class="flex items-center gap-8 text-sm">
+<a class="flex items-center gap-1 opacity-80 hover:opacity-100 transition-opacity" href="upload.html">
+<iconify-icon icon="mdi:file-upload"></iconify-icon> 合同上传
+            </a>
+<a class="flex items-center gap-1 text-blue-300 border-b-2 border-blue-300 pb-1" href="history.html">
+<iconify-icon icon="mdi:history"></iconify-icon> 审查记录
+            </a>
+<div class="flex items-center gap-3 border-l border-blue-700 pl-8 ml-2">
+<span class="opacity-80">管理员 (行政部)</span>
+<div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center border border-blue-400">
+<iconify-icon icon="mdi:account"></iconify-icon>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-[1200px] mx-auto py-10 px-4">
+<!-- 头部标题与筛选 -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h2 class="text-2xl font-bold text-gray-800">审查历史记录</h2>
+<p class="text-gray-500 mt-1 text-sm">系统共为您保存了 128 份合同审查结果，最近更新日期 2026-04-23。</p>
+</div>
+<div class="flex gap-4">
+<div class="relative">
+<input class="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-[300px]" placeholder="搜索合同名称/签署方" type="text"/>
+<iconify-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg" icon="mdi:magnify"></iconify-icon>
+</div>
+<button class="flex items-center gap-1.5 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm hover:bg-gray-50 transition-colors">
+<iconify-icon icon="mdi:filter-variant"></iconify-icon> 高级筛选
+                </button>
+</div>
+</div>
+<!-- 统计看板 -->
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+<p class="text-xs text-gray-500 font-bold uppercase mb-1">本月审查总数</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold text-gray-800">42</span>
+<span class="text-xs text-green-500 pb-1 flex items-center"><iconify-icon icon="mdi:trending-up"></iconify-icon> +12%</span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm border-l-4 border-red-500">
+<p class="text-xs text-gray-500 font-bold uppercase mb-1">检出高风险</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold text-red-600">8</span>
+<span class="text-xs text-red-500 pb-1 flex items-center"><iconify-icon icon="mdi:alert-decagram"></iconify-icon> 需关注</span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm border-l-4 border-blue-500">
+<p class="text-xs text-gray-500 font-bold uppercase mb-1">平均合规分</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold text-blue-600">82.5</span>
+<span class="text-xs text-gray-400 pb-1 uppercase font-bold tracking-widest">Good</span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+<p class="text-xs text-gray-500 font-bold uppercase mb-1">累计节省成本(估)</p>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-bold text-gray-800">12.8</span>
+<span class="text-xs text-gray-400 pb-1">万元</span>
+</div>
+</div>
+</div>
+<!-- 表格容器 -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-gray-50 border-b border-gray-100">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">合同名称 / 编号</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">上传时间</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">风险评估</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">合规得分</th>
+<th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-50">
+<!-- 数据行 1 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<iconify-icon class="text-3xl text-red-500" icon="mdi:file-pdf-box"></iconify-icon>
+<div>
+<p class="text-sm font-bold text-gray-800">2026年度办公用品采购合同草案</p>
+<p class="text-[10px] text-gray-400 tracking-wider">ZST-20260423-00892</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-gray-500">2026-04-23 14:30</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-red-100 text-red-700 text-[10px] font-bold rounded-full uppercase flex items-center gap-1 w-fit">
+<span class="w-1.5 h-1.5 bg-red-600 rounded-full animate-pulse"></span> 高风险 · 阻断建议
+                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-red-600">58</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3">
+<a class="text-blue-600 hover:text-blue-800 text-sm font-bold" href="workbench.html">审查工作台</a>
+<a class="text-gray-400 hover:text-gray-600" href="report.html"><iconify-icon class="text-lg" icon="mdi:printer"></iconify-icon></a>
+</div>
+</td>
+</tr>
+<!-- 数据行 2 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<iconify-icon class="text-3xl text-blue-600" icon="mdi:file-word-box"></iconify-icon>
+<div>
+<p class="text-sm font-bold text-gray-800">技术研发服务委外协议-核心云</p>
+<p class="text-[10px] text-gray-400 tracking-wider">ZST-20260421-00841</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-gray-500">2026-04-21 10:15</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold rounded-full uppercase flex items-center gap-1 w-fit">
+<span class="w-1.5 h-1.5 bg-amber-500 rounded-full"></span> 中风险 · 修正签署
+                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-amber-600">76</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-blue-600 hover:text-blue-800 text-sm font-bold">审查工作台</button>
+<button class="text-gray-400 hover:text-gray-600"><iconify-icon class="text-lg" icon="mdi:printer"></iconify-icon></button>
+</div>
+</td>
+</tr>
+<!-- 数据行 3 -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<iconify-icon class="text-3xl text-green-600" icon="mdi:file-document-box"></iconify-icon>
+<div>
+<p class="text-sm font-bold text-gray-800">政务云平台续约补充协议</p>
+<p class="text-[10px] text-gray-400 tracking-wider">ZST-20260420-00812</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-gray-500">2026-04-20 16:45</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-bold rounded-full uppercase flex items-center gap-1 w-fit">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> 合规 · 建议通过
+                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-green-600">92</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-blue-600 hover:text-blue-800 text-sm font-bold">查看详情</button>
+<button class="text-gray-400 hover:text-gray-600"><iconify-icon class="text-lg" icon="mdi:printer"></iconify-icon></button>
+</div>
+</td>
+</tr>
+<!-- 数据行 4 (更多) -->
+<tr class="hover:bg-blue-50/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<iconify-icon class="text-3xl text-gray-400" icon="mdi:file-pdf-box"></iconify-icon>
+<div>
+<p class="text-sm font-bold text-gray-800">大厦物业管理费结算单据</p>
+<p class="text-[10px] text-gray-400 tracking-wider">ZST-20260419-00755</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-gray-500">2026-04-19 09:30</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-gray-100 text-gray-500 text-[10px] font-bold rounded-full uppercase flex items-center gap-1 w-fit">
+<span class="w-1.5 h-1.5 bg-gray-400 rounded-full"></span> 已归档
+                            </span>
+</td>
+<td class="px-6 py-4">
+<span class="text-sm font-bold text-gray-600">88</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-blue-600 hover:text-blue-800 text-sm font-bold">查看详情</button>
+<button class="text-gray-400 hover:text-gray-600"><iconify-icon class="text-lg" icon="mdi:printer"></iconify-icon></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- 分页 -->
+<div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
+<span class="text-xs text-gray-500">显示 1 到 4，共 128 条记录</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-400 cursor-not-allowed"><iconify-icon icon="mdi:chevron-left"></iconify-icon></button>
+<button class="w-8 h-8 flex items-center justify-center bg-blue-600 text-white rounded font-bold text-xs">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-xs hover:border-blue-500">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-xs hover:border-blue-500">3</button>
+<span class="px-1 text-gray-400">...</span>
+<button class="w-8 h-8 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-xs hover:border-blue-500">32</button>
+<button class="w-8 h-8 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 hover:border-blue-500"><iconify-icon icon="mdi:chevron-right"></iconify-icon></button>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-12 text-center text-xs text-gray-400 py-8">
+        © 2026 智审通 AI合同审查系统 | 版权所有 · 合规办公
+    </footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>登录 - 智审通 AI合同审查系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.3.4.3.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.1.0.7.js"></script>
+</head>
+<body class="bg-[#f0f4f8] min-h-screen flex items-center justify-center font-sans">
+<div class="flex w-[1000px] h-[600px] bg-white rounded-2xl shadow-2xl overflow-hidden">
+<!-- 左侧宣传区 -->
+<div class="w-1/2 bg-[#1e3a8a] p-12 text-white flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-8">
+<iconify-icon class="text-4xl text-blue-300" icon="mdi:shield-check"></iconify-icon>
+<span class="text-2xl font-bold tracking-wider">智审通 AI</span>
+</div>
+<h1 class="text-4xl font-extrabold mb-6 leading-tight">专业、严谨、高效的<br/>AI 合同审查平台</h1>
+<p class="text-blue-100 text-lg opacity-80 leading-relaxed">
+                    基于 LLM+RAG 技术栈，深度识别合同条款风险，为政企办公提供合规护航。
+                </p>
+</div>
+<div class="relative z-10 space-y-4">
+<div class="flex items-center gap-3">
+<iconify-icon class="text-xl text-green-400" icon="mdi:check-circle-outline"></iconify-icon>
+<span>OCR 精准解析文本</span>
+</div>
+<div class="flex items-center gap-3">
+<iconify-icon class="text-xl text-green-400" icon="mdi:check-circle-outline"></iconify-icon>
+<span>多维风险条款高亮</span>
+</div>
+<div class="flex items-center gap-3">
+<iconify-icon class="text-xl text-green-400" icon="mdi:check-circle-outline"></iconify-icon>
+<span>一键生成专业审查报告</span>
+</div>
+</div>
+<!-- 装饰元素 -->
+<div class="absolute -bottom-20 -left-20 w-80 h-80 bg-blue-800 rounded-full opacity-50"></div>
+<div class="absolute top-1/2 -right-20 w-40 h-40 bg-blue-700 rounded-full opacity-30"></div>
+</div>
+<!-- 右侧登录表单 -->
+<div class="w-1/2 p-12 flex flex-col justify-center">
+<div class="mb-10 text-center">
+<h2 class="text-3xl font-bold text-gray-800 mb-2">欢迎回来</h2>
+<p class="text-gray-500">请输入您的账号密码登录系统</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault(); window.location.href='upload.html'">
+<div>
+<label class="block text-sm font-semibold text-gray-700 mb-2">账号名称</label>
+<div class="relative">
+<iconify-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" icon="mdi:account"></iconify-icon>
+<input class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all" placeholder="手机号/工号/邮箱" required="" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-700 mb-2">密码</label>
+<div class="relative">
+<iconify-icon class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl" icon="mdi:lock"></iconify-icon>
+<input class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<div class="flex items-center justify-between text-sm">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-gray-300" type="checkbox"/>
+<span class="text-gray-600 group-hover:text-blue-600 transition-colors">记住我</span>
+</label>
+<a class="text-blue-600 hover:underline" href="#">忘记密码？</a>
+</div>
+<button class="w-full py-3 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-blue-800 transition-all transform hover:scale-[1.01] active:scale-95 shadow-lg" type="submit">
+                    进入系统
+                </button>
+</form>
+<div class="mt-8 pt-8 border-t border-gray-100">
+<p class="text-center text-gray-500 text-sm">
+                    还没有账号？ <a class="text-blue-600 font-semibold hover:underline" href="#">申请开通账户</a>
+</p>
+</div>
+<p class="mt-12 text-center text-xs text-gray-400">
+                © 2026 智审通 AI合同审查系统 | 当前日期：2026-04-23
+            </p>
+</div>
+</div>
+</body>
+</html>

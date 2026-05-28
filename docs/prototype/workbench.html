@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>深度审查工作台 - 智审通 AI合同审查系统</title>
+<script src="https://modao.cc/agent-py/static/source/js/tailwindcss.3.4.3.js"></script>
+<script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.1.0.7.js"></script>
+<style>
+        .highlight-high { background-color: rgba(239, 68, 68, 0.2); border-bottom: 2px solid #ef4444; cursor: pointer; }
+        .highlight-warn { background-color: rgba(245, 158, 11, 0.2); border-bottom: 2px solid #f59e0b; cursor: pointer; }
+        .highlight-info { background-color: rgba(59, 130, 246, 0.2); border-bottom: 2px solid #3b82f6; cursor: pointer; }
+        .highlight-high:hover { background-color: rgba(239, 68, 68, 0.3); }
+        .active-risk { background-color: rgba(239, 68, 68, 0.4) !important; box-shadow: 0 0 10px rgba(239, 68, 68, 0.2); }
+    </style>
+</head>
+<body class="bg-[#f0f2f5] h-screen flex flex-col font-sans overflow-hidden">
+<!-- 顶部导航 -->
+<header class="bg-white h-14 border-b border-gray-200 flex items-center justify-between px-6 shrink-0 z-50">
+<div class="flex items-center gap-4">
+<a class="text-gray-400 hover:text-blue-600 transition-colors" href="upload.html">
+<iconify-icon class="text-3xl" icon="mdi:chevron-left"></iconify-icon>
+</a>
+<div>
+<h1 class="font-bold text-gray-800">深度审查：2026年度办公用品采购合同草案.pdf</h1>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="px-2 py-0.5 bg-red-100 text-red-600 text-[10px] font-bold rounded">建议阻断</span>
+<span class="text-[10px] text-gray-400">审查完成时间：2026-04-23 14:30</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1.5 px-4 py-1.5 border border-gray-300 rounded text-sm hover:bg-gray-50 transition-colors">
+<iconify-icon icon="mdi:content-save"></iconify-icon> 保存草稿
+            </button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 bg-[#1e3a8a] text-white rounded text-sm hover:bg-blue-800 transition-colors shadow-sm" onclick="window.location.href='report.html'">
+<iconify-icon icon="mdi:file-chart"></iconify-icon> 生成报告
+            </button>
+</div>
+</header>
+<!-- 主体区域 -->
+<main class="flex-1 flex overflow-hidden">
+<!-- 左侧：合同原文 -->
+<div class="w-1/2 bg-gray-100 p-8 overflow-y-auto border-r border-gray-200">
+<div class="max-w-[800px] mx-auto bg-white shadow-lg p-12 min-h-full rounded-sm relative text-gray-800 leading-relaxed font-serif">
+<h2 class="text-2xl font-bold text-center mb-10">办公用品采购合同</h2>
+<div class="space-y-6 text-sm">
+<p>甲方（采购方）：某某市行政管理局</p>
+<p>乙方（供货方）：某某贸易有限公司</p>
+<p>根据《中华人民共和国民法典》及相关法律法规，甲乙双方经友好协商，就办公用品采购事宜达成如下协议：</p>
+<h3 class="font-bold">第一条 采购项目与规格</h3>
+<p>甲方委托乙方供应2026年度所需的办公用品，包括但不限于文具、纸张、耗材等。具体品牌、型号、数量以甲方每次下达的《采购清单》为准。</p>
+<h3 class="font-bold">第二条 合同价款与结算</h3>
+<p>1. 本合同总价款预估为人民币 壹佰万元整（¥1,000,000.00）。</p>
+<p>2. <span class="highlight-warn" title="条款风险：结算周期模糊">结算方式：甲方在收到每批次货物并验收合格后，于 120 个工作日内支付该批次货款。</span></p>
+<h3 class="font-bold">第三条 质量标准与验收</h3>
+<p>1. 乙方所供产品应符合国家质量标准及行业标准。</p>
+<p>2. <span class="highlight-high active-risk" title="高风险：免除乙方核心责任">验收异常处理：如甲方对产品质量有异议，需在收货后 2 小时内提出，逾期未提出异议的，视为产品质量完全合格。</span></p>
+<h3 class="font-bold">第四条 交付与物流</h3>
+<p>1. 乙方需在收到甲方《采购清单》后 24 小时内送达指定地点。</p>
+<h3 class="font-bold">第五条 违约责任</h3>
+<p>1. <span class="highlight-high" title="高风险：权利义务严重不对等">违约条款：如甲方逾期支付货款，需按每日 5% 的比例支付滞纳金；如乙方逾期交货，仅需按总价款的 0.01% 支付违约金。</span></p>
+<p>2. <span class="highlight-info" title="建议优化：缺乏履约保证金说明">合同履行期间，如遇不可抗力因素，双方不承担赔偿责任。</span></p>
+<h3 class="font-bold">第六条 争议解决</h3>
+<p>本合同履行过程中发生的争议，由双方协商解决；协商不成的，<span class="highlight-warn">提交乙方所在地人民法院起诉。</span></p>
+<div class="mt-20 flex justify-between">
+<div class="w-1/3">
+<p>甲方（盖章）：</p>
+<p class="mt-8">代表签字：</p>
+</div>
+<div class="w-1/3">
+<p>乙方（盖章）：</p>
+<p class="mt-8">代表签字：</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 右侧：智能分析 -->
+<div class="w-1/2 bg-white flex flex-col overflow-hidden">
+<!-- 分析筛选 -->
+<div class="p-4 border-b border-gray-100 flex items-center justify-between bg-gray-50">
+<div class="flex gap-4">
+<button class="flex items-center gap-1 text-sm font-bold text-blue-600 border-b-2 border-blue-600 pb-1">
+                        风险列表 (4)
+                    </button>
+<button class="flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition-colors">
+                        条款对比
+                    </button>
+<button class="flex items-center gap-1 text-sm text-gray-500 hover:text-blue-600 transition-colors">
+                        合规参考
+                    </button>
+</div>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] px-2 py-1 bg-red-50 text-red-600 rounded">高风险: 2</span>
+<span class="flex items-center gap-1 text-[10px] px-2 py-1 bg-amber-50 text-amber-600 rounded">警示: 2</span>
+</div>
+</div>
+<!-- 风险滚动区 -->
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<!-- 风险卡片 1 -->
+<div class="border-2 border-red-500 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="bg-red-500 p-3 flex justify-between items-center">
+<span class="text-white text-xs font-bold flex items-center gap-1">
+<iconify-icon icon="mdi:alert-decagram"></iconify-icon> 高风险：验收责任免除
+                        </span>
+<span class="text-white text-[10px] opacity-80">违约条款 · 第3条</span>
+</div>
+<div class="p-4 bg-white space-y-3">
+<div class="text-sm text-gray-600">
+<span class="font-bold text-gray-800">原文内容：</span>“验收异常处理：如甲方对产品质量有异议，需在收货后 2 小时内提出...”
+                        </div>
+<div class="p-3 bg-red-50 rounded-lg text-sm text-red-800 leading-relaxed border border-red-100">
+<span class="font-bold">风险描述：</span>该条款设置的质量异议期（2小时）显著短于合理检验时间，极大地限制了采购方的权利，可能导致实际收货后发现的隐蔽缺陷无法追责。
+                        </div>
+<div class="text-sm text-blue-800 flex flex-col gap-2">
+<div class="flex items-start gap-2">
+<iconify-icon class="mt-1" icon="mdi:gavel"></iconify-icon>
+<span><span class="font-bold">法律依据：</span>《民法典》第六百二十一条规定，当事人没有约定检验期限的，应当在发现或者应当发现标的物数量或者质量不符合约定的合理期限内通知。</span>
+</div>
+<div class="flex items-start gap-2 p-2 bg-blue-50 rounded">
+<iconify-icon class="mt-1 text-amber-500" icon="mdi:lightbulb"></iconify-icon>
+<span><span class="font-bold text-blue-900">修改建议：</span>将“2 小时”修改为“3 个工作日”或“合理期限内”。</span>
+</div>
+</div>
+<div class="flex justify-end gap-3 pt-2 border-t border-gray-100">
+<button class="text-xs text-gray-400 hover:text-blue-600 transition-colors">忽略风险</button>
+<button class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-bold hover:bg-blue-200">一键修正</button>
+</div>
+</div>
+</div>
+<!-- 风险卡片 2 -->
+<div class="border border-red-200 rounded-xl overflow-hidden shadow-sm">
+<div class="bg-red-50 p-3 flex justify-between items-center border-b border-red-100">
+<span class="text-red-700 text-xs font-bold flex items-center gap-1">
+<iconify-icon icon="mdi:alert-circle"></iconify-icon> 高风险：违约金极端不对等
+                        </span>
+<span class="text-gray-400 text-[10px]">责任条款 · 第5条</span>
+</div>
+<div class="p-4 bg-white space-y-3">
+<div class="text-sm text-gray-600">
+<span class="font-bold text-gray-800">原文内容：</span>“甲方逾期支付需付每日 5% 滞纳金；乙方逾期仅需付 0.01%...”
+                        </div>
+<div class="p-3 bg-amber-50 rounded-lg text-sm text-amber-800 leading-relaxed">
+<span class="font-bold">风险提示：</span>5%的日滞纳金换算年化高达 1825%，远超法律规定的最高限制（LPR 4倍左右），且双方赔付标准相差 500 倍，属于显失公平条款。
+                        </div>
+<div class="flex justify-end gap-3 pt-2">
+<button class="text-xs text-gray-400 hover:text-blue-600 transition-colors">忽略风险</button>
+<button class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-bold">查看案例</button>
+</div>
+</div>
+</div>
+<!-- 风险卡片 3 -->
+<div class="border border-amber-200 rounded-xl overflow-hidden shadow-sm">
+<div class="bg-amber-50 p-3 flex justify-between items-center border-b border-amber-100">
+<span class="text-amber-700 text-xs font-bold flex items-center gap-1">
+<iconify-icon icon="mdi:alert-outline"></iconify-icon> 警告：结算周期过长
+                        </span>
+<span class="text-gray-400 text-[10px]">支付条款 · 第2条</span>
+</div>
+<div class="p-4 bg-white space-y-3">
+<div class="text-sm text-gray-600 leading-relaxed">
+<span class="font-bold">描述：</span>“120 个工作日”约合半年，可能对乙方经营造成压力。作为行政管理单位，需注意《保障中小企业款项支付条例》的相关限制（通常不得超过60日）。
+                        </div>
+</div>
+</div>
+</div>
+<!-- 底部交互 -->
+<div class="p-4 border-t border-gray-200 bg-white">
+<div class="relative">
+<input class="w-full pl-4 pr-20 py-3 bg-gray-100 border-none rounded-lg focus:ring-2 focus:ring-blue-500 text-sm" placeholder="向 AI 询问任何关于此合同的问题..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1.5 bg-blue-600 text-white rounded-md text-xs font-bold">
+                        发送
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- 底部状态栏 -->
+<footer class="bg-white h-10 border-t border-gray-200 flex items-center justify-between px-6 text-xs text-gray-500 shrink-0">
+<div class="flex gap-6">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span> 系统运行正常</span>
+<span class="flex items-center gap-1"><iconify-icon icon="mdi:clock-outline"></iconify-icon> 当前时间: 2026-04-23 15:45</span>
+</div>
+<div class="flex gap-4">
+<span>法律引擎版本: v4.2.0</span>
+<a class="hover:text-blue-600" href="#">帮助手册</a>
+</div>
+</footer>
+</body>
+</html>
