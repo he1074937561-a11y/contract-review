@@ -23,15 +23,16 @@
 <br>
 <br>
 
-<a href="demo.mp4">
-  <img src="https://img.shields.io/badge/📺_观看演示视频-8A2BE2?style=for-the-badge" alt="演示视频">
+<a href="https://raw.githubusercontent.com/he1074937561-a11y/contract-review/master/demo.mp4">
+  <img src="https://img.shields.io/badge/📺_下载演示视频-8A2BE2?style=for-the-badge" alt="演示视频">
 </a>
 
-</div>
-
+<br>
 <br>
 
-https://github.com/user-attachments/assets/f40cd423-8f9e-4c60-a3d6-58e104e2b2dc
+<video src="https://raw.githubusercontent.com/he1074937561-a11y/contract-review/master/demo.mp4" controls width="100%" style="max-width:800px;border-radius:12px;">
+  您的浏览器不支持视频播放，请<a href="https://raw.githubusercontent.com/he1074937561-a11y/contract-review/master/demo.mp4">下载视频</a>观看。
+</video>
 
 ---
 
