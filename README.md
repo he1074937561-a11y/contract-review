@@ -12,6 +12,8 @@ AI 原生合同审查助手 — 让每份合同都经得起推敲。
 
 [📥 下载演示视频 (demo.mp4, 60MB)](https://raw.githubusercontent.com/he1074937561-a11y/contract-review/master/demo.mp4)
 
+<video src="https://raw.githubusercontent.com/he1074937561-a11y/contract-review/master/demo.mp4" controls width="100%"></video>
+
 ---
 
 ## 产品概览
