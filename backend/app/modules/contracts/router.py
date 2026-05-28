@@ -51,7 +51,7 @@ async def list_contracts(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
-    query = select(Contract)
+    query = select(Contract).where(Contract.user_id == current_user.id)
     if search:
         query = query.where(Contract.title.ilike(f"%{search}%"))
     total_result = await db.execute(select(func.count()).select_from(query.subquery()))
@@ -64,7 +64,7 @@ async def list_contracts(
 
 @router.get("/{contract_id}", response_model=ContractResponse)
 async def get_contract(contract_id: int, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
-    result = await db.execute(select(Contract).where(Contract.id == contract_id))
+    result = await db.execute(select(Contract).where(Contract.id == contract_id, Contract.user_id == current_user.id))
     contract = result.scalar_one_or_none()
     if not contract:
         from fastapi import HTTPException
@@ -74,7 +74,7 @@ async def get_contract(contract_id: int, db: AsyncSession = Depends(get_db), cur
 
 @router.delete("/{contract_id}")
 async def delete_contract(contract_id: int, db: AsyncSession = Depends(get_db), current_user: User = Depends(get_current_user)):
-    result = await db.execute(select(Contract).where(Contract.id == contract_id))
+    result = await db.execute(select(Contract).where(Contract.id == contract_id, Contract.user_id == current_user.id))
     contract = result.scalar_one_or_none()
     if contract:
         title = contract.title

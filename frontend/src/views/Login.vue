@@ -57,7 +57,7 @@ async function handleLogin() {
   loading.value = true
   try {
     await auth.login(username.value, password.value)
-    await router.push('/contracts')
+    await router.push('/')
   } catch (e: any) {
     loginError.value = e.response?.data?.detail || '登录失败，请检查账号密码'
   } finally {
